@@ -1,0 +1,16 @@
+export const colors = {
+  bg: "#0B0B10",
+  surface: "#17161F",
+  surfaceAlt: "#221E3B",
+  ink: "#F2F2F6",
+  inkSoft: "#A2A0B3",
+  inkFaint: "#66647A",
+  accent: "#8B84FF",
+  accentInk: "#12101F",
+  success: "#34D399",
+  successSoft: "rgba(52,211,153,0.14)",
+  danger: "#F87171",
+  dangerSoft: "rgba(248,113,113,0.14)",
+  line: "#2B2938",
+  cardBg: "#1C1A27",
+};
