@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, {
   interpolate,
@@ -7,6 +7,7 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
+import { scheduleOnRN } from "react-native-worklets";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { ResultBadge } from "./ResultBadge";
 import { colors } from "@/theme/colors";
@@ -37,7 +38,7 @@ export function FlipCard({
   const translateX = useSharedValue(0);
   const rotate = useSharedValue(0);
 
-const frontStyle = useAnimatedStyle(() => ({
+  const frontStyle = useAnimatedStyle(() => ({
     transform: [
       { perspective: 1200 },
       { rotateY: `${interpolate(progress.value, [0, 1], [0, 180])}deg` },
@@ -67,7 +68,7 @@ const frontStyle = useAnimatedStyle(() => ({
     opacity: Math.max(0, -translateX.value / THRESHOLD),
   }));
 
-  React.useEffect(() => {
+  useEffect(() => {
     progress.value = withTiming(face === "answer" ? 1 : 0, { duration: 500 });
   }, [face, progress]);
 
@@ -79,11 +80,11 @@ const frontStyle = useAnimatedStyle(() => ({
     })
     .onEnd((e) => {
       if (Math.abs(e.translationX) > THRESHOLD) {
-        onMark(e.translationX > 0);
+        scheduleOnRN(onMark, e.translationX > 0);
         translateX.value = withSpring(0);
         rotate.value = withSpring(0);
       } else if (Math.abs(e.translationX) < 6) {
-        onFlip();
+        scheduleOnRN(onFlip);
         translateX.value = withTiming(0);
         rotate.value = withTiming(0);
       } else {
@@ -93,7 +94,7 @@ const frontStyle = useAnimatedStyle(() => ({
     });
 
   const tap = Gesture.Tap().onEnd(() => {
-    if (!answered) onFlip();
+    if (!answered) scheduleOnRN(onFlip);
   });
 
   return (
@@ -137,7 +138,7 @@ const frontStyle = useAnimatedStyle(() => ({
 }
 
 const styles = StyleSheet.create({
-dragLayer: {
+  dragLayer: {
     width: "100%",
     height: 220,
     position: "relative",

@@ -7,6 +7,7 @@ import { FlipCard } from "@/components/card/FlipCard";
 import { ExitSessionDialog } from "@/components/dialogs/ExitSessionDialog";
 import { useCards } from "@/hooks/useCards";
 import { useReview } from "@/hooks/useReview";
+import { calculateScore } from "@/services/ReviewService";
 import { colors } from "@/theme/colors";
 import { typography } from "@/theme/typography";
 
@@ -35,7 +36,7 @@ export default function ReviewScreen() {
         router.replace({
           pathname: "/result",
           params: {
-            score: String(review.answeredCount),
+            score: String(calculateScore(review.results)),
             total: String(review.total),
             collectionId: String(collectionId),
           },
@@ -84,7 +85,7 @@ export default function ReviewScreen() {
       <Text style={styles.caption}>
         {review.isAnswered
           ? "Card already answered"
-          : "Tap the card to flip it, swipe to answer"}
+          : "Tap the card to flip it, swipe left or right to answer"}
       </Text>
 
       <View style={styles.swipeZone}>
