@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { useRouter } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import { IconButton } from "@/components/common/IconButton";
 import { ScreenContainer } from "@/components/layout/ScreenContainer";
 import { BrandHeader } from "@/components/layout/BrandHeader";
@@ -15,9 +15,15 @@ import type { CollectionWithCount } from "@/types";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { collections, create, remove } = useCollections();
+  const { collections, remove, refresh } = useCollections();
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<CollectionWithCount | null>(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      refresh();
+    }, [refresh])
+  );
 
   const showSearch = collections.length > 0;
   const filtered = useMemo(() => {
