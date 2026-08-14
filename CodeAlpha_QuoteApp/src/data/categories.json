@@ -1,0 +1,7 @@
+[
+  { "key": "all", "label": "All" },
+  { "key": "wisdom", "label": "Wisdom" },
+  { "key": "motivation", "label": "Motivation" },
+  { "key": "life", "label": "Life" },
+  { "key": "humor", "label": "Humor" }
+]

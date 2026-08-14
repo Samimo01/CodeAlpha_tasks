@@ -1,0 +1,1634 @@
+[
+  {
+    "id": "quote-001",
+    "content": "The unexamined life is not worth living.",
+    "author": "Socrates",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-002",
+    "content": "Simplicity is the ultimate sophistication.",
+    "author": "Leonardo da Vinci",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-003",
+    "content": "The only true wisdom is in knowing you know nothing.",
+    "author": "Socrates",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-004",
+    "content": "In the middle of difficulty lies opportunity.",
+    "author": "Albert Einstein",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-005",
+    "content": "The way to get started is to quit talking and begin doing.",
+    "author": "Walt Disney",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-006",
+    "content": "Whether you think you can or you can't, you're right.",
+    "author": "Henry Ford",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-007",
+    "content": "I have not failed. I've just found ten thousand ways that won't work.",
+    "author": "Thomas Edison",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-008",
+    "content": "Life is what happens when you're busy making other plans.",
+    "author": "John Lennon",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-009",
+    "content": "Nothing in life is to be feared, it is only to be understood.",
+    "author": "Marie Curie",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-010",
+    "content": "Do not take life too seriously. You will never get out of it alive.",
+    "author": "Elbert Hubbard",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-011",
+    "content": "I'm not lazy, I'm on energy-saving mode.",
+    "author": "Anonymous",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-012",
+    "content": "A day without laughter is a day wasted.",
+    "author": "Charlie Chaplin",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-013",
+    "content": "He who has a why to live can bear almost any how.",
+    "author": "Friedrich Nietzsche",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-014",
+    "content": "The purpose of our lives is to be happy.",
+    "author": "Dalai Lama",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-015",
+    "content": "Act as if what you do makes a difference. It does.",
+    "author": "William James",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-016",
+    "content": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    "author": "Winston Churchill",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-017",
+    "content": "The best time to plant a tree was 20 years ago. The second best time is now.",
+    "author": "Chinese Proverb",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-018",
+    "content": "Why do programmers prefer dark mode? Because light attracts bugs.",
+    "author": "Anonymous",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-019",
+    "content": "Life is really simple, but we insist on making it complicated.",
+    "author": "Confucius",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-020",
+    "content": "Humor is mankind's greatest blessing.",
+    "author": "Mark Twain",
+    "tags": [
+      "humor",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-021",
+    "content": "The journey of a thousand miles begins with one step.",
+    "author": "Lao Tzu",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-022",
+    "content": "Knowing yourself is the beginning of all wisdom.",
+    "author": "Aristotle",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-023",
+    "content": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+    "author": "Will Durant",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-024",
+    "content": "It does not matter how slowly you go as long as you do not stop.",
+    "author": "Confucius",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-025",
+    "content": "Well begun is half done.",
+    "author": "Aristotle",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-026",
+    "content": "The secret of getting ahead is getting started.",
+    "author": "Mark Twain",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-027",
+    "content": "The future depends on what you do today.",
+    "author": "Mahatma Gandhi",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-028",
+    "content": "You miss 100% of the shots you don't take.",
+    "author": "Wayne Gretzky",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-029",
+    "content": "Believe you can and you're halfway there.",
+    "author": "Theodore Roosevelt",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-030",
+    "content": "Keep your face always toward the sunshine—and shadows will fall behind you.",
+    "author": "Walt Whitman",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-031",
+    "content": "Happiness depends upon ourselves.",
+    "author": "Aristotle",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-032",
+    "content": "Not all those who wander are lost.",
+    "author": "J. R. R. Tolkien",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-033",
+    "content": "Turn your wounds into wisdom.",
+    "author": "Oprah Winfrey",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-034",
+    "content": "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+    "author": "Nelson Mandela",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-035",
+    "content": "If you want to lift yourself up, lift up someone else.",
+    "author": "Booker T. Washington",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-036",
+    "content": "The only person you are destined to become is the person you decide to be.",
+    "author": "Ralph Waldo Emerson",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-037",
+    "content": "Nothing will work unless you do.",
+    "author": "Maya Angelou",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-038",
+    "content": "Try to be a rainbow in someone's cloud.",
+    "author": "Maya Angelou",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-039",
+    "content": "A room without books is like a body without a soul.",
+    "author": "Cicero",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-040",
+    "content": "He that can have patience can have what he will.",
+    "author": "Benjamin Franklin",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-041",
+    "content": "Lost time is never found again.",
+    "author": "Benjamin Franklin",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-042",
+    "content": "An investment in knowledge pays the best interest.",
+    "author": "Benjamin Franklin",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-043",
+    "content": "Energy and persistence conquer all things.",
+    "author": "Benjamin Franklin",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-044",
+    "content": "You have power over your mind—not outside events. Realize this, and you will find strength.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-045",
+    "content": "The happiness of your life depends upon the quality of your thoughts.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-046",
+    "content": "Waste no more time arguing about what a good man should be. Be one.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-047",
+    "content": "When you arise in the morning, think of what a privilege it is to be alive.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-048",
+    "content": "Difficulties strengthen the mind, as labor does the body.",
+    "author": "Seneca",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-049",
+    "content": "Luck is what happens when preparation meets opportunity.",
+    "author": "Seneca",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-050",
+    "content": "We suffer more often in imagination than in reality.",
+    "author": "Seneca",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-051",
+    "content": "No man is more unhappy than he who never faces adversity.",
+    "author": "Seneca",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-052",
+    "content": "Life is short, and it is up to you to make it sweet.",
+    "author": "Sarah Louise Delany",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-053",
+    "content": "In three words I can sum up everything I've learned about life: it goes on.",
+    "author": "Robert Frost",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-054",
+    "content": "The best way out is always through.",
+    "author": "Robert Frost",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-055",
+    "content": "There is no charm equal to tenderness of heart.",
+    "author": "Jane Austen",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-056",
+    "content": "It is never too late to be what you might have been.",
+    "author": "George Eliot",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-057",
+    "content": "It's never too late to have a happy childhood.",
+    "author": "Ben Furman",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-058",
+    "content": "A day without sunshine is like, you know, night.",
+    "author": "Steve Martin",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-059",
+    "content": "I can resist everything except temptation.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "humor",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-060",
+    "content": "Always forgive your enemies; nothing annoys them so much.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-061",
+    "content": "Life is far too important a thing ever to talk seriously about.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-062",
+    "content": "Be yourself; everyone else is already taken.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-063",
+    "content": "Experience is simply the name we give our mistakes.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "humor",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-064",
+    "content": "I never think of the future. It comes soon enough.",
+    "author": "Albert Einstein",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-065",
+    "content": "The difference between stupidity and genius is that genius has its limits.",
+    "author": "Albert Einstein",
+    "tags": [
+      "humor",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-066",
+    "content": "A clear conscience is usually the sign of a bad memory.",
+    "author": "Steven Wright",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-067",
+    "content": "The elevator to success is out of order. You'll have to use the stairs.",
+    "author": "Joe Girard",
+    "tags": [
+      "humor",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-068",
+    "content": "If at first you don't succeed, then skydiving definitely isn't for you.",
+    "author": "Steven Wright",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-069",
+    "content": "My fake plants died because I did not pretend to water them.",
+    "author": "Mitch Hedberg",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-070",
+    "content": "I always wanted to be somebody, but now I realize I should have been more specific.",
+    "author": "Lily Tomlin",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-071",
+    "content": "Age is something that doesn't matter, unless you are a cheese.",
+    "author": "Luis Bunuel",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-072",
+    "content": "A successful man is one who makes more money than his wife can spend. A successful woman is one who can find such a man.",
+    "author": "Lana Turner",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-073",
+    "content": "The road to success and the road to failure are almost exactly the same.",
+    "author": "Colin R. Davis",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-074",
+    "content": "Don't watch the clock; do what it does. Keep going.",
+    "author": "Sam Levenson",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-075",
+    "content": "The harder I work, the luckier I get.",
+    "author": "Samuel Goldwyn",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-076",
+    "content": "You are never too old to set another goal or to dream a new dream.",
+    "author": "C. S. Lewis",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-077",
+    "content": "Every moment is a fresh beginning.",
+    "author": "T. S. Eliot",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-078",
+    "content": "What we think, we become.",
+    "author": "Buddha",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-079",
+    "content": "Peace comes from within. Do not seek it without.",
+    "author": "Buddha",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-080",
+    "content": "The mind is everything. What you think you become.",
+    "author": "Buddha",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-081",
+    "content": "Happiness is not something ready made. It comes from your own actions.",
+    "author": "Dalai Lama",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-082",
+    "content": "The greatest wealth is to live content with little.",
+    "author": "Plato",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-083",
+    "content": "Courage is knowing what not to fear.",
+    "author": "Plato",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-084",
+    "content": "The beginning is the most important part of the work.",
+    "author": "Plato",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-085",
+    "content": "Knowing others is intelligence; knowing yourself is true wisdom.",
+    "author": "Lao Tzu",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-086",
+    "content": "Silence is a source of great strength.",
+    "author": "Lao Tzu",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-087",
+    "content": "Mastering others is strength; mastering yourself is true power.",
+    "author": "Lao Tzu",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-088",
+    "content": "What you do speaks so loudly that I cannot hear what you say.",
+    "author": "Ralph Waldo Emerson",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-089",
+    "content": "Nothing great was ever achieved without enthusiasm.",
+    "author": "Ralph Waldo Emerson",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-090",
+    "content": "Once you make a decision, the universe conspires to make it happen.",
+    "author": "Ralph Waldo Emerson",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-091",
+    "content": "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+    "author": "Ralph Waldo Emerson",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-092",
+    "content": "The only way to have a friend is to be one.",
+    "author": "Ralph Waldo Emerson",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-093",
+    "content": "A wise man can see more from the bottom of a well than a fool can from a mountain.",
+    "author": "Unknown",
+    "tags": [
+      "wisdom",
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-094",
+    "content": "The trouble with learning from experience is that you never graduate.",
+    "author": "Doug Larson",
+    "tags": [
+      "humor",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-095",
+    "content": "I am not arguing, I'm just explaining why I am right.",
+    "author": "Anonymous",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-096",
+    "content": "Common sense is like deodorant. The people who need it most never use it.",
+    "author": "Anonymous",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-097",
+    "content": "A balanced diet means a cupcake in each hand.",
+    "author": "Anonymous",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-098",
+    "content": "Some people graduate with honors, others with honors standing by.",
+    "author": "Anonymous",
+    "tags": [
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-099",
+    "content": "The best things in life are better with friends.",
+    "author": "Anonymous",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-100",
+    "content": "Where there is love there is life.",
+    "author": "Mahatma Gandhi",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-101",
+    "content": "Be the change that you wish to see in the world.",
+    "author": "Mahatma Gandhi",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-102",
+    "content": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+    "author": "Mahatma Gandhi",
+    "tags": [
+      "life",
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-103",
+    "content": "Strength does not come from physical capacity. It comes from an indomitable will.",
+    "author": "Mahatma Gandhi",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-104",
+    "content": "Happiness is when what you think, what you say, and what you do are in harmony.",
+    "author": "Mahatma Gandhi",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-105",
+    "content": "The greatest glory is not in never falling, but in rising every time we fall.",
+    "author": "Confucius",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-106",
+    "content": "Everything has beauty, but not everyone sees it.",
+    "author": "Confucius",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-107",
+    "content": "The will to win, the desire to succeed, the urge to reach your full potential... these are the keys that will unlock the door to personal excellence.",
+    "author": "Confucius",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-108",
+    "content": "I hear and I forget. I see and I remember. I do and I understand.",
+    "author": "Confucius",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-109",
+    "content": "A journey is best measured in friends, rather than miles.",
+    "author": "Tim Cahill",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-110",
+    "content": "Happiness is a warm puppy.",
+    "author": "Charles M. Schulz",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-111",
+    "content": "If you don't like the road you're walking, start paving another one.",
+    "author": "Dolly Parton",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-112",
+    "content": "The most wasted of days is one without laughter.",
+    "author": "E. E. Cummings",
+    "tags": [
+      "humor",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-113",
+    "content": "We don't remember days, we remember moments.",
+    "author": "Cesare Pavese",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-114",
+    "content": "The only impossible journey is the one you never begin.",
+    "author": "Tony Robbins",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-115",
+    "content": "Success usually comes to those who are too busy to be looking for it.",
+    "author": "Henry David Thoreau",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-116",
+    "content": "Go confidently in the direction of your dreams. Live the life you have imagined.",
+    "author": "Henry David Thoreau",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-117",
+    "content": "What lies behind us and what lies ahead of us are tiny matters compared to what lies within us.",
+    "author": "Henry David Thoreau",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-118",
+    "content": "Discontent is the first necessity of progress.",
+    "author": "Thomas Edison",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-119",
+    "content": "Opportunity is missed by most people because it is dressed in overalls and looks like work.",
+    "author": "Thomas Edison",
+    "tags": [
+      "humor",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-120",
+    "content": "Genius is one percent inspiration and ninety-nine percent perspiration.",
+    "author": "Thomas Edison",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-121",
+    "content": "If you cannot do great things, do small things in a great way.",
+    "author": "Napoleon Hill",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-122",
+    "content": "Don't be afraid to give up the good to go for the great.",
+    "author": "John D. Rockefeller",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-123",
+    "content": "The secret of happiness is not in doing what one likes, but in liking what one does.",
+    "author": "James M. Barrie",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-124",
+    "content": "Happiness is not an ideal of reason, but of imagination.",
+    "author": "Immanuel Kant",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-125",
+    "content": "The greatest wealth is health.",
+    "author": "Virgil",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-126",
+    "content": "Fortune favors the bold.",
+    "author": "Virgil",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-127",
+    "content": "Time you enjoy wasting is not wasted time.",
+    "author": "Marthe Troly-Curtin",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-128",
+    "content": "If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.",
+    "author": "J. K. Rowling",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-129",
+    "content": "It is our choices that show what we truly are, far more than our abilities.",
+    "author": "J. K. Rowling",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-130",
+    "content": "Happiness can be found even in the darkest of times if one only remembers to turn on the light.",
+    "author": "J. K. Rowling",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-131",
+    "content": "We are all in the gutter, but some of us are looking at the stars.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-132",
+    "content": "Every saint has a past, and every sinner has a future.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-133",
+    "content": "To live is the rarest thing in the world. Most people exist, that is all.",
+    "author": "Oscar Wilde",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-134",
+    "content": "You only live once, but if you do it right, once is enough.",
+    "author": "Mae West",
+    "tags": [
+      "life",
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-135",
+    "content": "I have learned to use the word impossible with the greatest caution.",
+    "author": "Wernher von Braun",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-136",
+    "content": "A goal without a plan is just a wish.",
+    "author": "Antoine de Saint-Exupery",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-137",
+    "content": "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.",
+    "author": "Antoine de Saint-Exupery",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-138",
+    "content": "Love does not consist in gazing at each other, but in looking outward together in the same direction.",
+    "author": "Antoine de Saint-Exupery",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-139",
+    "content": "The greatest happiness you can have is knowing that you do not necessarily require happiness.",
+    "author": "William Saroyan",
+    "tags": [
+      "life",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-140",
+    "content": "Do what you feel in your heart to be right—for you'll be criticized anyway.",
+    "author": "Eleanor Roosevelt",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-141",
+    "content": "The future belongs to those who believe in the beauty of their dreams.",
+    "author": "Eleanor Roosevelt",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-142",
+    "content": "No one can make you feel inferior without your consent.",
+    "author": "Eleanor Roosevelt",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-143",
+    "content": "Learn from yesterday, live for today, hope for tomorrow.",
+    "author": "Albert Einstein",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-144",
+    "content": "Logic will get you from A to B. Imagination will take you everywhere.",
+    "author": "Albert Einstein",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-145",
+    "content": "Creativity is intelligence having fun.",
+    "author": "Albert Einstein",
+    "tags": [
+      "humor",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-146",
+    "content": "The important thing is not to stop questioning.",
+    "author": "Albert Einstein",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-147",
+    "content": "Once you stop learning, you start dying.",
+    "author": "Albert Einstein",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-148",
+    "content": "Everything you can imagine is real.",
+    "author": "Pablo Picasso",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-149",
+    "content": "Action is the foundational key to all success.",
+    "author": "Pablo Picasso",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-150",
+    "content": "Art washes away from the soul the dust of everyday life.",
+    "author": "Pablo Picasso",
+    "tags": [
+      "life"
+    ]
+  },
+  {
+    "id": "quote-151",
+    "content": "If you can dream it, you can do it.",
+    "author": "Walt Disney",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-152",
+    "content": "All our dreams can come true, if we have the courage to pursue them.",
+    "author": "Walt Disney",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-153",
+    "content": "The more you like yourself, the less you are like anyone else, which makes you unique.",
+    "author": "Walt Disney",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-154",
+    "content": "A problem is a chance for you to do your best.",
+    "author": "Duke Ellington",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-155",
+    "content": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+    "author": "Albert Einstein",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-156",
+    "content": "The only limit to our realization of tomorrow is our doubts of today.",
+    "author": "Franklin D. Roosevelt",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-157",
+    "content": "Happiness is not something you postpone for the future; it is something you design for the present.",
+    "author": "Jim Rohn",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-158",
+    "content": "Either you run the day, or the day runs you.",
+    "author": "Jim Rohn",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-159",
+    "content": "Don't wish it were easier. Wish you were better.",
+    "author": "Jim Rohn",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-160",
+    "content": "Discipline is the bridge between goals and accomplishment.",
+    "author": "Jim Rohn",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-161",
+    "content": "Success is walking from failure to failure with no loss of enthusiasm.",
+    "author": "Winston Churchill",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-162",
+    "content": "Kites rise highest against the wind, not with it.",
+    "author": "Winston Churchill",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-163",
+    "content": "If you're going through hell, keep going.",
+    "author": "Winston Churchill",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-164",
+    "content": "Attitude is a little thing that makes a big difference.",
+    "author": "Winston Churchill",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-165",
+    "content": "It is never too late to mend.",
+    "author": "Proverb",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-166",
+    "content": "A stitch in time saves nine.",
+    "author": "Proverb",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-167",
+    "content": "Actions speak louder than words.",
+    "author": "Proverb",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-168",
+    "content": "Where there's a will, there's a way.",
+    "author": "Proverb",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-169",
+    "content": "Fall seven times, stand up eight.",
+    "author": "Japanese Proverb",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-170",
+    "content": "The quieter you become, the more you are able to hear.",
+    "author": "Unknown",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-171",
+    "content": "Don't count the days, make the days count.",
+    "author": "Muhammad Ali",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-172",
+    "content": "He who is not courageous enough to take risks will accomplish nothing in life.",
+    "author": "Muhammad Ali",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-173",
+    "content": "Float like a butterfly, sting like a bee.",
+    "author": "Muhammad Ali",
+    "tags": [
+      "motivation",
+      "humor"
+    ]
+  },
+  {
+    "id": "quote-174",
+    "content": "It's lack of faith that makes people afraid of meeting challenges, and I believed in myself.",
+    "author": "Muhammad Ali",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-175",
+    "content": "A champion is defined not by their wins but by how they can recover when they fall.",
+    "author": "Serena Williams",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-176",
+    "content": "The most difficult thing is the decision to act, the rest is merely tenacity.",
+    "author": "Amelia Earhart",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-177",
+    "content": "Adventure is worthwhile in itself.",
+    "author": "Amelia Earhart",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-178",
+    "content": "The woman who follows the crowd will usually go no further than the crowd.",
+    "author": "Francis Phillip Wernig",
+    "tags": [
+      "wisdom",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-179",
+    "content": "You can't cross the sea merely by standing and staring at the water.",
+    "author": "Rabindranath Tagore",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-180",
+    "content": "Faith is the bird that feels the light when the dawn is still dark.",
+    "author": "Rabindranath Tagore",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-181",
+    "content": "Don't limit a child to your own learning, for they were born in another time.",
+    "author": "Rabindranath Tagore",
+    "tags": [
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-182",
+    "content": "If you have no confidence in self, you are twice defeated in the race of life.",
+    "author": "Marcus Garvey",
+    "tags": [
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-183",
+    "content": "With the new day comes new strength and new thoughts.",
+    "author": "Eleanor Roosevelt",
+    "tags": [
+      "motivation",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-184",
+    "content": "The best revenge is to be unlike him who performed the injury.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-185",
+    "content": "It is not death that a man should fear, but he should fear never beginning to live.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-186",
+    "content": "The soul becomes dyed with the color of its thoughts.",
+    "author": "Marcus Aurelius",
+    "tags": [
+      "wisdom",
+      "life"
+    ]
+  },
+  {
+    "id": "quote-187",
+    "content": "Luck is a matter of preparation meeting opportunity.",
+    "author": "Seneca",
+    "tags": [
+      "motivation",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "quote-188",
+    "content": "Sometimes even to live is an act of courage.",
+    "author": "Seneca",
+    "tags": [
+      "life",
+      "motivation"
+    ]
+  },
+  {
+    "id": "quote-189",
+    "content": "Every new beginning comes from some other beginning's end.",
+    "author": "Seneca",
+    "tags": [
+      "life"
+    ]
+  }
+]
