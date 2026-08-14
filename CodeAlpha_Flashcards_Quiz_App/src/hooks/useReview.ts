@@ -48,19 +48,13 @@ export function useReview(cards: Card[]) {
   }, []);
 
   const goPrev = useCallback(() => {
-    setIndex((i) => {
-      if (i <= 0) return i;
-      setFace("question");
-      return i - 1;
-    });
+    setIndex((i) => (i <= 0 ? i : i - 1));
+    setFace("question");
   }, []);
 
   const goNext = useCallback(() => {
-    setIndex((i) => {
-      if (i >= order.length - 1) return i;
-      setFace("question");
-      return i + 1;
-    });
+    setIndex((i) => (i >= order.length - 1 ? i : i + 1));
+    setFace("question");
   }, [order.length]);
 
   const markAnswer = useCallback(
