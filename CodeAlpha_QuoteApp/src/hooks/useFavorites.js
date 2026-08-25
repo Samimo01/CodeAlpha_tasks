@@ -10,10 +10,8 @@ import { getAll, toggle } from "@/repositories/FavoritesRepository";
  */
 export function useFavorites() {
   const context = useContext(FavoritesContext);
-  if (context) {
-    return context;
-  }
-
+  // Keep the last removed quote available for the snackbar's undo action.
+  const [removedFavorite, setRemovedFavorite] = useState(null);
   const [favorites, setFavorites] = useState([]);
 
   // Load all favorites from storage
@@ -23,8 +21,10 @@ export function useFavorites() {
   }, []);
 
   useEffect(() => {
-    loadFavorites();
-  }, [loadFavorites]);
+    if (!context) {
+      loadFavorites();
+    }
+  }, [context, loadFavorites]);
 
   const toggleFavorite = useCallback(async (quote) => {
     const newFavoriteState = await toggle(quote);
@@ -39,11 +39,60 @@ export function useFavorites() {
     return newFavoriteState;
   }, []);
 
+  const removeFavorite = useCallback(async (quote) => {
+    await toggleFavorite(quote);
+    // Store the quote only after the removal has been persisted successfully.
+    setRemovedFavorite(quote);
+  }, [toggleFavorite]);
+
+  const undoFavorite = useCallback(async () => {
+    if (!removedFavorite) {
+      return;
+    }
+
+    await toggleFavorite(removedFavorite);
+    // Clear the pending undo once the quote has been restored.
+    setRemovedFavorite(null);
+  }, [removedFavorite, toggleFavorite]);
+
+  if (context) {
+    const removeFavorite = async (quote) => {
+      await context.toggleFavorite(quote);
+      setRemovedFavorite(quote);
+    };
+
+    const undoFavorite = async () => {
+      if (!removedFavorite) {
+        return;
+      }
+
+      await context.toggleFavorite(removedFavorite);
+      setRemovedFavorite(null);
+    };
+
+    return {
+      ...context,
+      removedFavorite,
+      removeFavorite,
+      undoFavorite,
+      clearRemovedFavorite: () => setRemovedFavorite(null),
+    };
+  }
+
   // Check if a quote is in the favorites list
   const isFavorite = useCallback(
     (id) => favorites.some((q) => q.id === id),
     [favorites]
   );
 
-  return { favorites, toggleFavorite, isFavorite, refresh: loadFavorites };
+  return {
+    favorites,
+    toggleFavorite,
+    isFavorite,
+    refresh: loadFavorites,
+    removedFavorite,
+    removeFavorite,
+    undoFavorite,
+    clearRemovedFavorite: () => setRemovedFavorite(null),
+  };
 }
