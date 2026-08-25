@@ -1,0 +1,134 @@
+[
+    {
+        "id": "ex1",
+        "name": "Bench Press",
+        "muscle": "Chest",
+        "equipment": "Barbell"
+    },
+    {
+        "id": "ex2",
+        "name": "Incline Bench Press",
+        "muscle": "Chest",
+        "equipment": "Barbell"
+    },
+    {
+        "id": "ex3",
+        "name": "Dumbbell Fly",
+        "muscle": "Chest",
+        "equipment": "Dumbbell"
+    },
+    {
+        "id": "ex4",
+        "name": "Pull Up",
+        "muscle": "Back",
+        "equipment": "Bodyweight"
+    },
+    {
+        "id": "ex5",
+        "name": "Barbell Row",
+        "muscle": "Back",
+        "equipment": "Barbell"
+    },
+    {
+        "id": "ex6",
+        "name": "Lat Pulldown",
+        "muscle": "Back",
+        "equipment": "Cable"
+    },
+    {
+        "id": "ex7",
+        "name": "Deadlift",
+        "muscle": "Back",
+        "equipment": "Barbell"
+    },
+    {
+        "id": "ex8",
+        "name": "Shoulder Press",
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell"
+    },
+    {
+        "id": "ex9",
+        "name": "Lateral Raise",
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell"
+    },
+    {
+        "id": "ex10",
+        "name": "Front Raise",
+        "muscle": "Shoulders",
+        "equipment": "Dumbbell"
+    },
+    {
+        "id": "ex11",
+        "name": "Bicep Curl",
+        "muscle": "Arms",
+        "equipment": "Dumbbell"
+    },
+    {
+        "id": "ex12",
+        "name": "Hammer Curl",
+        "muscle": "Arms",
+        "equipment": "Dumbbell"
+    },
+    {
+        "id": "ex13",
+        "name": "Tricep Pushdown",
+        "muscle": "Arms",
+        "equipment": "Cable"
+    },
+    {
+        "id": "ex14",
+        "name": "Skull Crusher",
+        "muscle": "Arms",
+        "equipment": "Barbell"
+    },
+    {
+        "id": "ex15",
+        "name": "Squat",
+        "muscle": "Legs",
+        "equipment": "Barbell"
+    },
+    {
+        "id": "ex16",
+        "name": "Leg Press",
+        "muscle": "Legs",
+        "equipment": "Machine"
+    },
+    {
+        "id": "ex17",
+        "name": "Leg Curl",
+        "muscle": "Legs",
+        "equipment": "Machine"
+    },
+    {
+        "id": "ex18",
+        "name": "Leg Extension",
+        "muscle": "Legs",
+        "equipment": "Machine"
+    },
+    {
+        "id": "ex19",
+        "name": "Calf Raise",
+        "muscle": "Legs",
+        "equipment": "Machine"
+    },
+    {
+        "id": "ex20",
+        "name": "Plank",
+        "muscle": "Abs",
+        "equipment": "Bodyweight"
+    },
+    {
+        "id": "ex21",
+        "name": "Hanging Leg Raise",
+        "muscle": "Abs",
+        "equipment": "Bodyweight"
+    },
+    {
+        "id": "ex22",
+        "name": "Cable Crunch",
+        "muscle": "Abs",
+        "equipment": "Cable"
+    }
+]
