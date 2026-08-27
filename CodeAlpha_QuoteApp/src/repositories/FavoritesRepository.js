@@ -1,8 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// Storage key for persisting favorites to device storage
-// const STORAGE_KEY = "@quoteapp/favorites";
-
 /**
  * Retrieve all favorite quotes from storage.
  * @returns {Promise<Array>} Array of favorite quote objects
