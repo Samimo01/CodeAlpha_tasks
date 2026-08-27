@@ -1,8 +1,6 @@
 import * as SQLite from "expo-sqlite";
 import { runMigrations } from "./migrations";
 
-const DB_NAME = "recall.db";
-
 let dbPromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
 /**
@@ -12,7 +10,7 @@ let dbPromise: Promise<SQLite.SQLiteDatabase> | null = null;
 export function getDatabase(): Promise<SQLite.SQLiteDatabase> {
   if (!dbPromise) {
     dbPromise = (async () => {
-      const db = await SQLite.openDatabaseAsync(DB_NAME);
+      const db = await SQLite.openDatabaseAsync(process.env.EXPO_PUBLIC_DB_NAME);
       await runMigrations(db);
       return db;
     })();
