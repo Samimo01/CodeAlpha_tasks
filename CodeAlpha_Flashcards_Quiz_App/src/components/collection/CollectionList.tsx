@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { CollectionRow } from "./CollectionRow";
 import type { CollectionWithCount } from "@/types";
@@ -11,6 +11,9 @@ interface Props {
 }
 
 export function CollectionList({ collections, onOpen, onEdit, onDelete }: Props) {
+  
+  const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+
   return (
     <FlatList
       data={collections}
@@ -20,6 +23,13 @@ export function CollectionList({ collections, onOpen, onEdit, onDelete }: Props)
       renderItem={({ item }) => (
         <CollectionRow
           collection={item}
+          menuOpen={openMenuId === item.id}
+          onToggleMenu={() =>
+            setOpenMenuId((currentId) =>
+              currentId === item.id ? null : item.id
+            )
+          }
+          onCloseMenu={() => setOpenMenuId(null)}
           onOpen={() => onOpen(item.id, item.name)}
           onEdit={() => onEdit(item.id)}
           onDelete={() => onDelete(item)}
