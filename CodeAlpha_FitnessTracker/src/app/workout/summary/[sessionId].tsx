@@ -11,9 +11,16 @@ import { typography } from "@/theme/typography";
 
 // Loads the finished session and summarizes its duration, volume, and calories.
 export default function Summary() {
-    const { sessionId } = useLocalSearchParams<{ sessionId: string }>();
+    const { sessionId, newPrs: newPrsParam } = useLocalSearchParams<{ sessionId: string; newPrs?: string }>();
     const router = useRouter();
     const [session, setSession] = useState<Awaited<ReturnType<typeof workoutRepository.getSessionById>>>(null);
+
+    let newPrs: Array<{ name: string; weight: number }> = [];
+    try {
+        newPrs = newPrsParam ? JSON.parse(newPrsParam) as Array<{ name: string; weight: number }> : [];
+    } catch {
+        newPrs = [];
+    }
 
     useEffect(() => {
         void workoutRepository.getSessionById(Number(sessionId)).then(setSession)
@@ -46,8 +53,15 @@ export default function Summary() {
                 <View style={styles.records}>
                     <View style={styles.recordsHeader}>
                         <Award size={15} color={colors.textFaint} />
-                        <Text style={styles.recordsTitle}>0 New Personal Records</Text>
+                        <Text style={styles.recordsTitle}>{newPrs.length} New Personal Record{newPrs.length === 1 ? "" : "s"}</Text>
                     </View>
+                    
+                    {newPrs.map((record) => (
+                        <View style={styles.recordRow} key={record.name}>
+                            <Text style={styles.recordName}>{record.name}</Text>
+                            <Text style={styles.recordWeight}>{record.weight} kg</Text>
+                        </View>
+                    ))}
                 </View>
                 <Text style={styles.encouragement}>Great job!</Text>
                 <AppButton onPress={() => router.replace("/")}>Done</AppButton>
@@ -109,6 +123,27 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 8
+    },
+    recordRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        borderTopWidth: 1,
+        borderTopColor: colors.borderSoft,
+        paddingTop: 10,
+        marginTop: 10
+    },
+    recordName: {
+        ...typography.body,
+        color: colors.text,
+        fontSize: 13,
+        fontWeight: "600",
+        flex: 1
+    },
+    recordWeight: {
+        ...typography.numeric,
+        color: colors.accentDark,
+        fontSize: 13
     },
     recordsTitle: {
         ...typography.body,

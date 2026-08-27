@@ -54,7 +54,13 @@ function ActiveWorkout({ template }: { template: WorkoutTemplate }) {
                     </View>
                 )}
 
-                <AppButton onPress={async () => { const result = await finishWorkout(); router.replace(`/workout/summary/${result.id}`) }}>Finish Workout</AppButton>
+                <AppButton onPress={async () => {
+                    const result = await finishWorkout();
+                    router.replace({
+                        pathname: `/workout/summary/${result.id}`,
+                        params: { newPrs: JSON.stringify(result.newPrs) }
+                    });
+                }}>Finish Workout</AppButton>
             </ScrollView>
         </ScreenContainer>
     )
