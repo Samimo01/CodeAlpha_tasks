@@ -1,8 +1,8 @@
-# Fitness Tracker — Workout Tracking App
+# LiftLog — Fitness Tracker App
 
-> CodeAlpha App Development Internship — Task 3: Fitness Tracker
+> CodeAlpha App Development Internship — Task 3: Fitness Tracker App
 
-Fitness Tracker is a mobile workout tracking application designed to help users plan, perform, and review their training sessions. Users can choose from predefined workout templates or create their own, track exercises and sets during an active session, monitor their training progress, and review their workout history and personal records.
+LiftLog is a mobile workout tracking application designed to help users plan, perform, and review their training sessions. Users can choose from predefined workout templates or create their own, track exercises and sets during an active session, monitor their training progress, and review their workout history and personal records.
 
 ## Features
 
@@ -14,7 +14,7 @@ Fitness Tracker is a mobile workout tracking application designed to help users 
 * **Workout history** — browse previously completed sessions and open an individual session to review its details.
 * **Progress tracking** — visualize training statistics and monitor progression over time through activity, volume, and weight charts.
 * **Personal records** — automatically detect and display new personal records for exercises.
-* **Local persistence** — workout templates, sessions, exercises, sets, and personal records are stored locally on the device using SQLite.
+* **Local persistence** — workout sessions, sets, and body-weight history are stored locally with SQLite, while workout templates and template edits are persisted in AsyncStorage.
 * **Bodyweight exercise support** — bodyweight exercises take the user's body weight into account when calculating training volume.
 * **Offline-first experience** — the application does not require a backend or external API to manage workout data.
 
@@ -36,7 +36,7 @@ Fitness Tracker is a mobile workout tracking application designed to help users 
 
 ## Architecture
 
-The application follows a layered architecture that separates the presentation layer, application state, business logic, and data persistence:
+The application follows a layered architecture that separates the presentation layer, application state, business logic, and data persistence. The real implementation combines SQLite for workout history with AsyncStorage for template state:
 
 ```text
 Screens
@@ -49,7 +49,7 @@ Services
    ↓
 Repositories
    ↓
-SQLite Database
+SQLite + AsyncStorage
 ```
 
 ### `app/`
@@ -86,7 +86,7 @@ Contains custom React hooks responsible for application state and data orchestra
 
 Hooks act as the bridge between the screens/components and the underlying services and repositories. They encapsulate operations such as loading workout data, managing workout state, refreshing persisted data, and exposing simplified actions to the UI.
 
-This prevents screens from having to directly interact with SQLite or implement business logic themselves.
+This prevents screens from having to directly interact with persistence code or implement business logic themselves.
 
 ```text
 Screen
@@ -95,7 +95,7 @@ Custom Hook
   ↓
 Service / Repository
   ↓
-SQLite
+SQLite or AsyncStorage
 ```
 
 ### `services/`
@@ -115,17 +115,17 @@ Keeping this logic outside the UI makes the application easier to maintain and t
 
 ### `repositories/`
 
-Provides an abstraction over the local database.
+Provides a data-access layer that abstracts persistence and keeps SQLite-specific logic out of the UI.
 
-Repositories are responsible for reading and writing persistent data while keeping SQLite-specific operations away from the rest of the application.
+In this codebase, repositories are used for both SQLite-backed data (workout sessions, sets, body weight logs) and application-level template state stored in `AsyncStorage` for custom and edited workout templates.
 
-This separation makes the data layer independent from the screens and components.
+This separation keeps screens and hooks focused on interaction and state orchestration rather than database internals.
 
 ### `database/`
 
-Contains the SQLite database configuration, schema, initialization, and persistence-related logic.
+Contains the SQLite setup, schema, migrations, and repository access logic.
 
-The application uses `expo-sqlite` to maintain structured relational data directly on the user's device.
+The application uses `expo-sqlite` to persist workout sessions, exercises, set history, and body-weight logs on the device. Workout templates themselves are stored through `@react-native-async-storage/async-storage` rather than in a dedicated SQLite table.
 
 ### `types/`
 
@@ -157,181 +157,124 @@ The database therefore uses a relational structure to avoid duplicating informat
 ### Main Entities
 
 ```text
-                    ┌──────────────────────┐
-                    │      exercises       │
-                    └──────────┬───────────┘
-                               │
-                ┌──────────────┴──────────────┐
-                │                             │
-                ▼                             ▼
-┌─────────────────────────────┐   ┌──────────────────────┐
-│ workout_template_exercises  │   │   personal_records   │
-└──────────────┬──────────────┘   └──────────────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│     workout_templates       │
-└──────────────┬──────────────┘
-               │
-               │
-               ▼
-┌─────────────────────────────┐
-│      workout_sessions       │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│      session_exercises      │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│        set_entries          │
-└─────────────────────────────┘
+SQLite (expo-sqlite)
+├── workout_sessions
+│   └── session_exercises
+│       └── sets
+├── body_weight_log
+└── optional migration metadata
+
+AsyncStorage
+└── workout template state
+    ├── default templates visibility
+    ├── custom templates
+    ├── template edits
+    └── hidden default templates
 ```
-
-### Exercises
-
-The `exercises` entity represents the application's exercise library.
-
-An exercise can be reused in multiple workout templates and across multiple workout sessions.
-
-Typical information includes:
-
-* Exercise name
-* Target muscle group
-* Equipment
-* Exercise type
 
 ### Workout Templates
 
-Workout templates represent reusable workout routines.
+Workout templates are not stored in a dedicated SQLite table in the current implementation.
 
-The application provides predefined templates such as:
+Instead, the app keeps:
 
-* Push Day
-* Pull Day
-* Leg Day
-* Upper Body
-* Full Body
+* a built-in catalog of default templates in the service layer,
+* custom templates created by the user,
+* edited/default visibility metadata,
+* hidden default templates,
 
-Users can also create their own custom workout templates.
+inside `AsyncStorage` through `WorkoutTemplateRepository`.
 
-A template describes the planned workout rather than an actual completed training session.
-
-### Workout Template Exercises
-
-A workout template can contain multiple exercises, and the same exercise can appear in multiple templates.
-
-This relationship is represented through a dedicated association between templates and exercises.
-
-This allows the application to preserve:
-
-* Which exercises belong to a template.
-* The order of exercises.
-* The relationship between reusable exercises and workout routines.
+This makes the template list flexible for user modifications without mutating historical workout data.
 
 ### Workout Sessions
 
 A workout session represents an actual training session performed by the user.
 
-A session is created when the user starts a workout and contains information related to the execution of that workout, such as:
+The session is stored in SQLite with information such as:
 
-* Workout name
-* Start time
-* End time
-* Duration
-* Total volume
-* Completed exercises
+* workout name
+* start timestamp
+* duration in seconds
+* calories burned
 
-A workout template can therefore be reused to create multiple independent sessions without modifying historical data.
+Each session may contain multiple `session_exercises`, each of which can have multiple sets recorded for the workout.
 
 ### Session Exercises
 
-`session_exercises` represents the exercises actually performed during a specific workout session.
+`session_exercises` stores the exercises that were actually performed during a specific training session.
 
-This is separated from template exercises because the user may perform a different number of sets or record different values during each session.
+The same exercise can appear in different sessions, but each session keeps its own set history and ordering. This allows the app to preserve historical performance without modifying the template definition.
 
-For example:
+Example:
 
 ```text
-Push Day Template
-    └── Bench Press
-
-Session #1
+Workout Session
     └── Bench Press
         ├── Set 1 → 60 kg × 10
         ├── Set 2 → 60 kg × 8
         └── Set 3 → 65 kg × 6
-
-Session #2
-    └── Bench Press
-        ├── Set 1 → 65 kg × 10
-        ├── Set 2 → 65 kg × 8
-        └── Set 3 → 70 kg × 5
 ```
-
-The template remains unchanged while each session stores its own performance data.
 
 ### Set Entries
 
-Each performed exercise can contain multiple sets.
+Each recorded exercise can contain multiple sets.
 
-A set records the actual performance of the user, including values such as:
+A set captures:
 
-* Weight
-* Repetitions
-* Completion status
+* weight
+* repetitions
+* order within the exercise
 
-This level of granularity allows the application to calculate training volume and analyze progression over time.
+These values are used to calculate volume, detect trends, and build session summaries.
+
+### Body Weight Log
+
+Bodyweight measurements are tracked in `body_weight_log` and stored independently of workout sessions.
+
+This table is used to:
+
+* determine the user's latest body weight,
+* include bodyweight resistance in volume calculations,
+* display weight progression charts.
 
 ### Personal Records
 
-Personal records store the user's best recorded performance for an exercise.
+Personal records are not stored in a dedicated `personal_records` table in the current implementation.
 
-When a workout is completed, the application can compare the newly recorded performance against the existing personal record and identify a new record when appropriate.
-
-This information is then displayed in the progress and workout summary sections.
+The app computes them dynamically by querying all sets for each exercise and taking the maximum recorded weight. This result is then displayed in the progress screen and workout summary.
 
 ---
 
 ## Database Relationships
 
-The main relationships can be represented as follows:
+The current implementation uses a simpler, practical model than the original documentation draft:
 
 ```text
-Exercise
+Workout Session
    │
-   ├─────────────── 1 ─── N ─── Workout Template Exercise
-   │                                  │
-   │                                  N
-   │                                  │
-   │                                  1
-   │                         Workout Template
-   │
-   └─────────────── 1 ─── N ─── Session Exercise
+   └─────────────── 1 ─── N ─── Session Exercise 
                                       │
                                       │ 1
                                       │
                                       N
                                       ▼
-                                  Set Entry
+                                    Set Entry
 
-Exercise
-   │
-   └─────────────── 1 ─── 1 ─── Personal Record
+Body Weight Log
+   └── independent measurements used for weight charts and volume calculations
 
-Workout Template
-   │
-   └─────────────── 1 ─── N ─── Workout Session
+AsyncStorage template store
+   └── default templates + custom templates + edit/visibility metadata
 ```
 
-This structure provides a clear separation between:
+This structure reflects the real codebase:
 
-* **What the user plans to do** → workout templates.
-* **What the user actually did** → workout sessions.
+* **What the user plans to do** → template definitions in `AsyncStorage`.
+* **What the user actually did** → workout sessions in SQLite.
 * **How the user performed** → session exercises and sets.
-* **What the user's best performance is** → personal records.
+* **How body weight evolves** → `body_weight_log`.
+* **Best performance** → computed dynamically from stored set data instead of a dedicated table.
 
 ---
 
@@ -468,11 +411,12 @@ The application can then be opened using Expo Go or an appropriate development b
 
 ## Technical Notes
 
-* **Local database** — Fitness Tracker uses `expo-sqlite` to persist structured workout data directly on the device.
+* **Local database** — Fitness Tracker uses `expo-sqlite` to persist workout sessions, set history, and body-weight records directly on the device.
+* **Template persistence** — default/custom templates and template edits are saved in `AsyncStorage` instead of a dedicated SQLite table.
 * **No backend required** — the application does not depend on a remote server or external API for its core functionality.
 * **Reusable workout templates** — predefined templates are provided for common training splits, while users can also create custom routines.
 * **Training volume** — weighted exercises calculate volume from weight and repetitions. Bodyweight exercises additionally account for the user's body weight.
-* **Personal records** — completed workouts are analyzed to determine whether a new personal record has been achieved.
+* **Personal records** — completed workouts are analyzed dynamically to determine whether a new personal record has been achieved.
 * **Progress visualization** — historical workout data is reused to generate activity, volume, and weight-related charts.
 * **Type safety** — TypeScript strict mode is enabled throughout the project, with the `@/*` path alias mapped to the source directory.
 * **Expo Router** — navigation follows the file-based routing architecture provided by Expo Router.
