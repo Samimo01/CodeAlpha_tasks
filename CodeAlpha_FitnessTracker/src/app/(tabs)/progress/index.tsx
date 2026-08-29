@@ -1,9 +1,11 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { ScreenContainer } from "@/components/layout/ScreenContainer";
 import { StatCard } from "@/components/common/StatCard";
+import { EmptyState } from "@/components/common/EmptyState";
 import { WeeklyActivityChart } from "@/components/progress/WeeklyActivityChart";
 import { VolumeChart } from "@/components/progress/VolumeChart";
 import { WeightChart } from "@/components/progress/WeightChart";
+import { WeightLogRow } from "@/components/progress/WeightLogRow";
 import { PersonalRecordRow } from "@/components/progress/PersonalRecordRow";
 import { useProgressStats } from "@/hooks/useProgressStats";
 import { colors } from "@/theme/colors";
@@ -11,10 +13,11 @@ import { typography } from "@/theme/typography";
 import { fmtDuration } from "@/utils/format";
 import { Dumbbell, Clock, TrendingUp, Award } from "lucide-react-native";
 
-
 // Presents workout volume, activity, body weight, and personal-record trends.
 export default function Progress() {
-    const { stats, weekly, weights, prs } = useProgressStats();
+    const { stats, weekly, weights, prs, logWeight } = useProgressStats();
+    const hasSessions = weekly.length > 0;
+    const hasWeightTrend = weights.length >= 2;
 
     return (
         <ScreenContainer>
@@ -29,21 +32,33 @@ export default function Progress() {
 
                 <Text style={styles.label}>WEEKLY ACTIVITY</Text>
                 <View style={styles.chart}>
-                    <WeeklyActivityChart data={weekly.map(x => ({ value: x.workouts, label: x.week.slice(-3) }))} />
+                    {hasSessions
+                        ? <WeeklyActivityChart data={weekly.map(x => ({ value: x.workouts, label: x.week.slice(-3) }))} />
+                        : <EmptyState>Complete a workout to see your weekly activity.</EmptyState>}
                 </View>
 
                 <Text style={styles.label}>VOLUME PROGRESS</Text>
                 <View style={styles.chart}>
-                    <VolumeChart data={weekly.map(x => ({ value: x.volume, label: x.week.slice(-3) }))} />
+                    {hasSessions
+                        ? <VolumeChart data={weekly.map(x => ({ value: x.volume, label: x.week.slice(-3) }))} />
+                        : <EmptyState>Complete a workout to see your volume trend.</EmptyState>}
                 </View>
 
-                {/* <Text style={styles.label}>WEIGHT PROGRESS</Text>
+                <Text style={styles.label}>WEIGHT PROGRESS</Text>
+                <WeightLogRow onSubmit={(w) => void logWeight(w)} />
                 <View style={styles.chart}>
-                    <WeightChart data={weights.map(x => ({ value: x.weight, label: new Date(x.date).getDate().toString() }))} />
-                </View> */}
+                    {hasWeightTrend
+                        ? <WeightChart data={weights.map(x => ({
+                            value: x.weight,
+                            label: new Date(x.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+                        }))} />
+                        : <EmptyState>Log at least two weigh-ins to see your trend.</EmptyState>}
+                </View>
 
                 <Text style={styles.label}>PERSONAL RECORDS</Text>
-                {prs.map(p => <PersonalRecordRow key={p.exerciseName} record={p} />)}
+                {prs.length > 0
+                    ? prs.map(p => <PersonalRecordRow key={p.exerciseName} record={p} />)
+                    : <EmptyState>Finish a workout to set your first personal record.</EmptyState>}
 
             </ScrollView>
         </ScreenContainer>
@@ -52,29 +67,8 @@ export default function Progress() {
 
 const styles = StyleSheet.create({
     content: { padding: 20 },
-    title: {
-        ...typography.display,
-        fontSize: 21,
-        color: colors.text,
-        marginBottom: 20
-    },
-    grid: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        gap: 8,
-        marginBottom: 20
-    },
-    label: {
-        ...typography.label,
-        color: colors.textMuted,
-        marginVertical: 10
-    },
-    chart: {
-        backgroundColor: colors.surface,
-        borderWidth: 1,
-        borderColor: colors.border,
-        borderRadius: 16,
-        padding: 8,
-        marginBottom: 12
-    }
+    title: { ...typography.display, fontSize: 21, color: colors.text, marginBottom: 20 },
+    grid: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 20 },
+    label: { ...typography.label, color: colors.textMuted, marginVertical: 10 },
+    chart: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 16, padding: 8, marginBottom: 12 }
 });
