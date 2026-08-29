@@ -1,12 +1,11 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useState } from "react";
 import { Clock, TrendingUp } from "lucide-react-native";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { ScreenContainer } from "@/components/layout/ScreenContainer";
 import { ScreenHeader } from "@/components/layout/ScreenHeader";
 import { StatCard } from "@/components/common/StatCard";
 import { SetRow } from "@/components/workout/SetRow";
-import { workoutRepository } from "@/database/repositories/WorkoutRepository";
+import { useWorkoutSession } from "@/hooks/useWorkoutSession";
 import { colors } from "@/theme/colors";
 import { typography } from "@/theme/typography";
 import type { WorkoutSession } from "@/types";
@@ -29,11 +28,7 @@ function sessionVolume(session: WorkoutSession) {
 export default function Detail() {
     const { id } = useLocalSearchParams<{ id: string }>();
     const router = useRouter();
-    const [session, setSession] = useState<Awaited<ReturnType<typeof workoutRepository.getSessionById>>>(null);
-
-    useEffect(() => {
-        void workoutRepository.getSessionById(Number(id)).then(setSession)
-    }, [id]);
+    const { session } = useWorkoutSession(id ? Number(id) : null);
 
     if (!session) return null;
 

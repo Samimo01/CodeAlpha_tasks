@@ -1,11 +1,10 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useState } from "react";
 import { Award, Check, Clock, Dumbbell, TrendingUp } from "lucide-react-native";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { ScreenContainer } from "@/components/layout/ScreenContainer";
 import { StatCard } from "@/components/common/StatCard";
 import { AppButton } from "@/components/common/AppButton";
-import { workoutRepository } from "@/database/repositories/WorkoutRepository";
+import { useWorkoutSession } from "@/hooks/useWorkoutSession";
 import { colors } from "@/theme/colors";
 import { typography } from "@/theme/typography";
 
@@ -13,7 +12,7 @@ import { typography } from "@/theme/typography";
 export default function Summary() {
     const { sessionId, newPrs: newPrsParam } = useLocalSearchParams<{ sessionId: string; newPrs?: string }>();
     const router = useRouter();
-    const [session, setSession] = useState<Awaited<ReturnType<typeof workoutRepository.getSessionById>>>(null);
+    const { session } = useWorkoutSession(sessionId ? Number(sessionId) : null);
 
     let newPrs: Array<{ name: string; weight: number }> = [];
     try {
@@ -21,10 +20,6 @@ export default function Summary() {
     } catch {
         newPrs = [];
     }
-
-    useEffect(() => {
-        void workoutRepository.getSessionById(Number(sessionId)).then(setSession)
-    }, [sessionId]);
 
     if (!session) return null;
 
