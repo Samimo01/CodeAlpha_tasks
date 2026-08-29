@@ -12,28 +12,36 @@ export class WorkoutRepository {
   ): Promise<number> {
 
     const db = await getDatabase();
-    const result = await db.runAsync(`
+    let sessionId = 0;
+
+    await db.withTransactionAsync(async () => {
+      const sessionResult = await db.runAsync(`
       INSERT INTO workout_sessions (name, started_at, duration_seconds, calories_burned) 
       VALUES (?, ?, ?, ?)`,
-      name, startedAt, durationSeconds, caloriesBurned
-    );
+        name, startedAt, durationSeconds, caloriesBurned
+      );
+      sessionId = sessionResult.lastInsertRowId;
 
-    for (let i = 0; i < exercises.length; i += 1) {
-      const ex = exercises[i];
-      const row = await db.runAsync(`
+      for (let i = 0; i < exercises.length; i += 1) {
+        const ex = exercises[i];
+        const exerciseResult = await db.runAsync(`
         INSERT INTO session_exercises (session_id, exercise_name, equipment, position) 
         VALUES (?, ?, ?, ?)`,
-        result.lastInsertRowId, ex.name, ex.equipment, i
-      );
+          sessionId, ex.name, ex.equipment, i
+        );
+        const sessionExerciseId = exerciseResult.lastInsertRowId;
 
-      for (let j = 0; j < ex.sets.length; j += 1) await db.runAsync(`
-        INSERT INTO sets (session_exercise_id, weight, reps, set_order) 
-        VALUES ((SELECT id FROM session_exercises WHERE session_id = ? AND position = ?), ?, ?, ?)`,
-        result.lastInsertRowId, i, ex.sets[j].weight, ex.sets[j].reps, j
-      );
-    }
+        for (let j = 0; j < ex.sets.length; j += 1) {
+          await db.runAsync(`
+          INSERT INTO sets (session_exercise_id, weight, reps, set_order) 
+          VALUES (?, ?, ?, ?)`,
+            sessionExerciseId, ex.sets[j].weight, ex.sets[j].reps, j
+          );
+        }
+      }
+    });
 
-    return result.lastInsertRowId;
+    return sessionId;
   }
 
   // Retrieves every saved workout session with its nested exercise data.
