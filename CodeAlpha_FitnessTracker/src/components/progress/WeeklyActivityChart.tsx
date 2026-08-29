@@ -1,8 +1,16 @@
 import { BarChart } from "react-native-gifted-charts";
 import { colors } from "@/theme/colors";
 
-// Renders weekly workout counts for the progress dashboard.
-export function WeeklyActivityChart({ data }: { data: Array<{ value: number; label: string }> }) {
+interface WeeklyActivityChartProps {
+    data: Array<{ value: number; label: string }>;
+}
+
+// Renders weekly workout counts with a visible scale and a value label on
+// each bar — the previous version hid both the axis and the numbers.
+export function WeeklyActivityChart({ data }: WeeklyActivityChartProps) {
+    const maxValue = Math.max(...data.map((d) => d.value), 1) + 1;
+    const sections = Math.min(maxValue, 6);
+
     return (
         <BarChart
             data={data}
@@ -10,11 +18,17 @@ export function WeeklyActivityChart({ data }: { data: Array<{ value: number; lab
             barBorderTopRightRadius={5}
             barWidth={26}
             frontColor={colors.accent}
-            hideRules
-            yAxisTextStyle={{ color: colors.textFaint }}
-            xAxisLabelTextStyle={{ color: colors.textFaint }}
-            height={120}
-            hideYAxisText
+            maxValue={maxValue}
+            noOfSections={sections}
+            rulesColor={colors.borderSoft}
+            rulesType="solid"
+            yAxisColor={colors.border}
+            xAxisColor={colors.border}
+            yAxisTextStyle={{ color: colors.textFaint, fontSize: 9 }}
+            xAxisLabelTextStyle={{ color: colors.textFaint, fontSize: 9 }}
+            showValuesAsTopLabel
+            topLabelTextStyle={{ color: colors.text, fontSize: 10, fontWeight: "700" }}
+            height={130}
         />
-    )
+    );
 }
