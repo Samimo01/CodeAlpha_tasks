@@ -5,7 +5,9 @@ import { ScreenHeader } from "@/components/layout/ScreenHeader";
 import { EffortRing } from "@/components/workout/EffortRing";
 import { Stepper } from "@/components/common/Stepper";
 import { AppButton } from "@/components/common/AppButton";
+import { ConfirmModal } from "@/components/common/ConfirmModal";
 import { useActiveWorkout } from "@/hooks/useActiveWorkout";
+import { useConfirm } from "@/hooks/useConfirm";
 import { buildWorkout } from "@/services/WorkoutService";
 import { useWorkoutTemplates } from "@/hooks/useWorkoutTemplates";
 import catalog from "@/data/exercises.json";
@@ -28,10 +30,21 @@ function ActiveWorkout({ template }: { template: WorkoutTemplate }) {
     const all = catalog as Exercise[];
     const workout = buildWorkout(template.name, template.exerciseIds.map(id => all.find(x => x.id === id)).filter((x): x is Exercise => Boolean(x)));
     const { activeWorkout, seconds, updateSet, addSet, removeSet, finishWorkout } = useActiveWorkout(workout);
+    const { confirm, modalProps } = useConfirm();
+
+    function handleBack() {
+        confirm({
+            title: "Quit workout",
+            message: "Your progress on this session hasn't been saved yet. Leaving now will discard it.",
+            confirmLabel: "Quit",
+            destructive: true,
+            onConfirm: () => router.back()
+        });
+    }
 
     return (
         <ScreenContainer>
-            <ScreenHeader title={activeWorkout.name} onBack={() => router.back()} />
+            <ScreenHeader title={activeWorkout.name} onBack={handleBack} />
             <View style={styles.ring}>
                 <EffortRing seconds={seconds} />
             </View>
@@ -62,6 +75,8 @@ function ActiveWorkout({ template }: { template: WorkoutTemplate }) {
                     });
                 }}>Finish Workout</AppButton>
             </ScrollView>
+
+            <ConfirmModal {...modalProps} />
         </ScreenContainer>
     )
 }
