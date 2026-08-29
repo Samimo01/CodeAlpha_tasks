@@ -7,12 +7,14 @@ import { AppButton } from "@/components/common/AppButton";
 import { colors } from "@/theme/colors";
 import { typography } from "@/theme/typography";
 import { useHistory } from "@/hooks/useHistory";
+import { sessionVolume } from "@/services/StatsService";
 import { fmtDuration } from "@/utils/format";
 
 export default function Home() {
     const router = useRouter();
     const { sessions } = useHistory();
     const today = sessions.filter(s => new Date(s.startedAt).toDateString() === new Date().toDateString());
+    const todayVolume = today.reduce((sum, s) => sum + sessionVolume(s), 0);
     const latest = sessions[0];
 
     // Home Page
@@ -29,7 +31,7 @@ export default function Home() {
                     <StatCard caption="Workouts" value={today.length} icon={<Dumbbell color={colors.textMuted} size={20} />} />
                     <StatCard caption="Duration" value={fmtDuration(Math.round(today.reduce((a, s) => a + s.durationSeconds, 0) / 60))} icon={<Clock color={colors.textMuted} size={20} />} />
                     <StatCard caption="Calories" value={today.reduce((a, s) => a + s.caloriesBurned, 0)} unit="kcal" icon={<Flame color={colors.textMuted} size={20} />} />
-                    <StatCard caption="Volume" value="0.0" unit="t" icon={<TrendingUp color={colors.textMuted} size={20} />} />
+                    <StatCard caption="Volume" value={todayVolume.toFixed(1)} unit="t" icon={<TrendingUp color={colors.textMuted} size={20} />} />
                 </View>
 
                 <Text style={styles.label}>LATEST SESSION</Text>
