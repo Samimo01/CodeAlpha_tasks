@@ -69,7 +69,7 @@ export default function Edit() {
 
                 {(catalog as Array<{ id: string; name: string; muscle: string }>).map(e => (
                     <Pressable key={e.id} onPress={() => setIds(x => x.includes(e.id) ? x.filter(id => id !== e.id) : [...x, e.id])}>
-                        <ExerciseRow name={`${ids.includes(e.id) ? "✓ " : ""}${e.name}`} muscle={e.muscle} />
+                        <ExerciseRow name={e.name} muscle={e.muscle} selected={ids.includes(e.id)} />
                     </Pressable>
                 ))}
 

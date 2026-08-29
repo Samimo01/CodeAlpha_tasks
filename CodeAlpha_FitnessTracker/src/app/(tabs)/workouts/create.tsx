@@ -40,7 +40,8 @@ export default function Create() {
                 <Text style={styles.label}>EXERCISES · {ids.length}</Text>
 
                 {(catalog as Array<{ id: string; name: string; muscle: string }>).map(e => <Pressable key={e.id} onPress={() => setIds(x => x.includes(e.id) ? x.filter(id => id !== e.id) : [...x, e.id])}>
-                    <ExerciseRow name={`${ids.includes(e.id) ? "✓ " : ""}${e.name}`} muscle={e.muscle} /></Pressable>
+                    <ExerciseRow name={e.name} muscle={e.muscle} selected={ids.includes(e.id)} />
+                </Pressable>
                 )}
 
                 <AppButton disabled={!name.trim() || !ids.length} onPress={startWorkout}>Start Workout</AppButton>
