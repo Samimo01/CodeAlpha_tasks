@@ -51,6 +51,10 @@ export function useActiveWorkout(initial: ActiveWorkout) {
 
 	// Saves the workout and returns the calculated completion summary.
 	async function finishWorkout() {
+		if (!activeWorkout.exercises.some((exercise) => exercise.sets.length > 0)) {
+			throw new Error("Add at least one set to save your workout.");
+		}
+
 		const bodyWeight = await bodyWeightRepository.getLatest();
 		const records = await workoutRepository.getPersonalRecords();
 		const best = Object.fromEntries(records.map((record) => [record.exerciseName, record.weight]));

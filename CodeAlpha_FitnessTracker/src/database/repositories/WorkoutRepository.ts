@@ -11,6 +11,10 @@ export class WorkoutRepository {
     exercises: Array<{ name: string; equipment: Equipment; sets: SetEntry[] }>
   ): Promise<number> {
 
+    if (!exercises.some((exercise) => exercise.sets.length > 0)) {
+      throw new Error("At least one exercise set is required to save a workout session.");
+    }
+
     const db = await getDatabase();
     let sessionId = 0;
 
@@ -24,19 +28,23 @@ export class WorkoutRepository {
 
       for (let i = 0; i < exercises.length; i += 1) {
         const ex = exercises[i];
-        const exerciseResult = await db.runAsync(`
-        INSERT INTO session_exercises (session_id, exercise_name, equipment, position) 
-        VALUES (?, ?, ?, ?)`,
-          sessionId, ex.name, ex.equipment, i
-        );
-        const sessionExerciseId = exerciseResult.lastInsertRowId;
 
-        for (let j = 0; j < ex.sets.length; j += 1) {
-          await db.runAsync(`
-          INSERT INTO sets (session_exercise_id, weight, reps, set_order) 
+        // An exercise is registered if it contains at least 1 set
+        if (ex.sets.length > 0) {
+          const exerciseResult = await db.runAsync(`
+          INSERT INTO session_exercises (session_id, exercise_name, equipment, position) 
           VALUES (?, ?, ?, ?)`,
-            sessionExerciseId, ex.sets[j].weight, ex.sets[j].reps, j
+            sessionId, ex.name, ex.equipment, i
           );
+          const sessionExerciseId = exerciseResult.lastInsertRowId;
+
+          for (let j = 0; j < ex.sets.length; j += 1) {
+            await db.runAsync(`
+            INSERT INTO sets (session_exercise_id, weight, reps, set_order) 
+            VALUES (?, ?, ?, ?)`,
+              sessionExerciseId, ex.sets[j].weight, ex.sets[j].reps, j
+            );
+          }
         }
       }
     });

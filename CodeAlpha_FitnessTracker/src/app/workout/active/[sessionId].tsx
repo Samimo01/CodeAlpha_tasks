@@ -70,6 +70,7 @@ function ActiveWorkoutLoader({ template }: { template: WorkoutTemplate }) {
 
 function ActiveWorkout({ workout }: { workout: ActiveWorkout }) {
     const router = useRouter();
+    const [saveError, setSaveError] = useState<string | null>(null);
 
     const {
         activeWorkout,
@@ -81,6 +82,7 @@ function ActiveWorkout({ workout }: { workout: ActiveWorkout }) {
     } = useActiveWorkout(workout);
 
     const { confirm, modalProps } = useConfirm();
+    const hasAnySets = activeWorkout.exercises.some((exercise) => exercise.sets.length > 0);
 
     function handleBack() {
         confirm({
@@ -90,6 +92,29 @@ function ActiveWorkout({ workout }: { workout: ActiveWorkout }) {
             destructive: true,
             onConfirm: () => router.back()
         });
+    }
+
+    async function endWorkout() {
+        setSaveError(null);
+
+        try {
+            const result = await finishWorkout();
+
+            router.replace({
+                pathname: `/workout/summary/${result.id}`,
+                params: {
+                    newPrs: JSON.stringify(
+                        result.newPrs
+                    )
+                }
+            });
+        } catch (error) {
+            const message = error instanceof Error
+                ? error.message
+                : "Add at least one set before finishing the workout.";
+
+            setSaveError(message);
+        }
     }
 
     return (
@@ -186,19 +211,13 @@ function ActiveWorkout({ workout }: { workout: ActiveWorkout }) {
                     </View>
                 ))}
 
-                <AppButton
-                    onPress={async () => {
-                        const result = await finishWorkout();
+                {saveError ? (
+                    <Text style={styles.errorText}>{saveError}</Text>
+                ) : null}
 
-                        router.replace({
-                            pathname: `/workout/summary/${result.id}`,
-                            params: {
-                                newPrs: JSON.stringify(
-                                    result.newPrs
-                                )
-                            }
-                        });
-                    }}
+                <AppButton
+                    disabled={!hasAnySets}
+                    onPress={endWorkout}
                 >
                     Finish Workout
                 </AppButton>
@@ -217,6 +236,14 @@ const styles = StyleSheet.create({
 
     content: {
         padding: 20
+    },
+
+    errorText: {
+        color: colors.danger,
+        fontSize: 12,
+        fontWeight: "600",
+        marginBottom: 12,
+        textAlign: "center"
     },
 
     card: {
