@@ -39,7 +39,7 @@ export default function Detail() {
             <ScreenHeader
                 title={session.name}
                 subtitle={new Date(session.startedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                onBack={() => router.back()}
+                onBack={() => router.push(`/history`)}
             />
 
             <ScrollView contentContainerStyle={styles.content}>
