@@ -108,6 +108,61 @@ export class WorkoutRepository {
     const db = await getDatabase();
     await db.runAsync("DELETE FROM workout_sessions WHERE id = ?", id);
   }
+
+  // Retrieves the most recent completed session with the given workout name.
+  async getLastSessionByName(name: string): Promise<WorkoutSession | null> {
+    const db = await getDatabase();
+
+    const row = await db.getFirstAsync<{
+      id: number;
+      name: string;
+      started_at: string;
+      duration_seconds: number;
+      calories_burned: number;
+    }>(
+      `SELECT *
+       FROM workout_sessions
+       WHERE name = ?
+       ORDER BY started_at DESC
+       LIMIT 1`,
+      name
+    );
+
+    if (!row) return null;
+
+    const exercises = await db.getAllAsync<{
+      id: number;
+      exercise_name: string;
+      equipment: Equipment;
+    }>(
+      `SELECT id, exercise_name, equipment
+       FROM session_exercises
+       WHERE session_id = ?
+       ORDER BY position`,
+      row.id
+    );
+
+    return {
+      id: row.id,
+      name: row.name,
+      startedAt: row.started_at,
+      durationSeconds: row.duration_seconds,
+      caloriesBurned: row.calories_burned,
+      exercises: await Promise.all(
+        exercises.map(async (exercise) => ({
+          name: exercise.exercise_name,
+          equipment: exercise.equipment,
+          sets: await db.getAllAsync<SetEntry>(
+            `SELECT weight, reps
+             FROM sets
+             WHERE session_exercise_id = ?
+             ORDER BY set_order`,
+            exercise.id
+          )
+        }))
+      )
+    };
+  }
 }
 
 export const workoutRepository = new WorkoutRepository();
