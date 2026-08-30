@@ -21,7 +21,7 @@ export default function Preview() {
 
     return (
         <ScreenContainer>
-            <ScreenHeader title={t.name} subtitle={t.muscles} onBack={() => router.back()} />
+            <ScreenHeader title={t.name} subtitle={t.muscles} onBack={() => router.push(`/workouts`)} />
             <ScrollView contentContainerStyle={{ padding: 20 }}>
                 {t.exerciseIds.map(id => {
                     const e = all.find(x => x.id === id);

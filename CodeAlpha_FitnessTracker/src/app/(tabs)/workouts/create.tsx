@@ -27,7 +27,7 @@ export default function Create() {
         return exerciseCatalog.filter(exercise => exercise.muscle === selectedGroup);
     }, [selectedGroup]);
 
-    async function startWorkout() {
+    async function saveWorkout() {
         const selected = exerciseCatalog.filter(e => ids.includes(e.id));
         const template = {
             id: `custom-${Date.now()}`,
@@ -38,7 +38,7 @@ export default function Create() {
         };
 
         await addTemplate(template);
-        router.push(`/workout/active/${template.id}`);
+        router.push(`/workout/preview/${template.id}`);
     }
 
     return (
@@ -81,7 +81,7 @@ export default function Create() {
                     </Pressable>
                 ))}
 
-                <AppButton disabled={!name.trim() || !ids.length} onPress={startWorkout}>Start Workout</AppButton>
+                <AppButton disabled={!name.trim() || !ids.length} onPress={saveWorkout}>Save Workout</AppButton>
             </ScrollView>
         </ScreenContainer>
     )
