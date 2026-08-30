@@ -4,7 +4,7 @@ import { DEFAULT_TEMPLATES } from "@/services/WorkoutService";
 import catalog from "@/data/exercises.json";
 import type { Exercise } from "@/types";
 
-const STORAGE_KEY = process.env.EXPO_PUBLIC_STORAGE_KEY;
+const STORAGE_KEY = process.env.EXPO_PUBLIC_STORAGE_KEY ?? 'liftlog-templates';
 
 type TemplateEditableFields = Pick<WorkoutTemplate, "name" | "muscles" | "exerciseIds" | "avgDurationMinutes">;
 

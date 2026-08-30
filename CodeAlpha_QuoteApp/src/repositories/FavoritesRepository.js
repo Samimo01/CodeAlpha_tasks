@@ -1,12 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const STORAGE_KEY = process.env.EXPO_PUBLIC_STORAGE_KEY ?? 'quotidian-favorites'
+
 /**
  * Retrieve all favorite quotes from storage.
  * @returns {Promise<Array>} Array of favorite quote objects
  */
 export async function getAll() {
   try {
-    const stored = await AsyncStorage.getItem(process.env.EXPO_PUBLIC_STORAGE_KEY);
+    const stored = await AsyncStorage.getItem(STORAGE_KEY);
     return stored ? JSON.parse(stored) : [];
 
   } catch (error) {
@@ -27,7 +29,7 @@ export async function add(quote) {
     // Only add if not already favorited
     if (!exists) {
       const updated = [...current, quote];
-      await AsyncStorage.setItem(process.env.EXPO_PUBLIC_STORAGE_KEY, JSON.stringify(updated));
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     }
 
   } catch (error) {
@@ -43,7 +45,7 @@ export async function remove(id) {
   try {
     const current = await getAll();
     const updated = current.filter((q) => q.id !== id);
-    await AsyncStorage.setItem(process.env.EXPO_PUBLIC_STORAGE_KEY, JSON.stringify(updated));
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
 
   } catch (error) {
     console.warn("[FavoritesRepository] Failed to remove favorite:", error);
