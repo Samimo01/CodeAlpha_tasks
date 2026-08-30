@@ -401,7 +401,29 @@ Install the dependencies:
 npm install
 ```
 
-Start the Expo development server:
+### Environment Variables
+
+LiftLog reads two optional variables at runtime, both with safe defaults so the app runs out of the box without any `.env` file:
+
+| Variable                    | Default              | Used in                                       | Purpose                                                                 |
+| ---------------------------- | --------------------- | ---------------------------------------------- | ------------------------------------------------------------------------ |
+| `EXPO_PUBLIC_DB_NAME`        | `liftlog.db`          | `src/database/database.ts`                     | Name of the local SQLite database file opened via `expo-sqlite`.        |
+| `EXPO_PUBLIC_STORAGE_KEY`    | `liftlog-templates`   | `src/database/repositories/WorkoutTemplateRepository.ts` | AsyncStorage key under which workout templates and edits are persisted. |
+
+To override the defaults, copy the provided example file and fill in the values:
+
+```bash
+cp .env.example .env
+```
+
+```env
+EXPO_PUBLIC_DB_NAME=liftlog.db
+EXPO_PUBLIC_STORAGE_KEY=liftlog-templates
+```
+
+Overriding these is mainly useful when running multiple LiftLog instances (or app variants) on the same device/simulator without their local data colliding — for example during QA against two branches at once. The `EXPO_PUBLIC_` prefix is required by Expo to expose the variable to client-side code; without it, `process.env` would be `undefined` at runtime. `.env` is gitignored — only `.env.example` is committed.
+
+### Start the development server
 
 ```bash
 npx expo start

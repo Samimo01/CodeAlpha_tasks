@@ -71,6 +71,26 @@ npx expo start
 
 Requires Expo Go (SDK 54) or a development build — the app uses `expo-sqlite`, which is not available in a plain web preview.
 
+### Environment Variables
+
+Recall reads one optional variable at runtime with a safe default, so the app runs out of the box without any `.env` file:
+
+| Variable | Default | Used in | Purpose |
+| --- | --- | --- | --- |
+| `EXPO_PUBLIC_DB_NAME` | `recall.db` | `src/database/database.ts` | Name of the local SQLite database file opened via `expo-sqlite`. |
+
+To override the default, copy the example file and fill in the value:
+
+```bash
+cp .env.example .env
+```
+
+```env
+EXPO_PUBLIC_DB_NAME=recall.db
+```
+
+Changing the database name is mainly useful when running multiple Recall instances (or app variants) on the same device/simulator without their local data colliding — for example during QA against two branches at once. The `EXPO_PUBLIC_` prefix is required by Expo to expose the variable to client-side code; without it, `process.env` would be `undefined` at runtime. `.env` is typically gitignored — only `.env.example` is committed.
+
 ## Technical Notes
 
 - **Reanimated v4 worklets**: state-update callbacks (`onFlip`, `onMark`) cannot be invoked directly from a worklet. `FlipCard` uses `scheduleOnRN` from `react-native-worklets` (the replacement for the deprecated `runOnJS`) to safely cross the JS/UI-thread boundary on swipe/tap gestures.

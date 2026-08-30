@@ -56,7 +56,25 @@ npm install
 npx expo start
 ```
 
-Set `EXPO_PUBLIC_STORAGE_KEY` in your environment (used by `FavoritesRepository` as the AsyncStorage key) before running the app.
+### Environment Variables
+
+Quotidian reads one optional variable at runtime with a safe default, so the app runs out of the box without any `.env` file:
+
+| Variable | Default | Used in | Purpose |
+| --- | --- | --- | --- |
+| `EXPO_PUBLIC_STORAGE_KEY` | `quotidian-favorites` | `src/repositories/FavoritesRepository.js` | AsyncStorage key under which favorite quotes are persisted. |
+
+To override the default, copy the example file and fill in the value:
+
+```bash
+cp .env.example .env
+```
+
+```env
+EXPO_PUBLIC_STORAGE_KEY=quotidian-favorites
+```
+
+Overriding this is mainly useful when running multiple Quotidian instances (or app variants) on the same device/simulator without their saved favorites colliding — for example during QA against two branches at once. The `EXPO_PUBLIC_` prefix is required by Expo to expose the variable to client-side code; without it, `process.env` would be `undefined` at runtime. `.env` is typically gitignored — only `.env.example` is committed.
 
 ## Task Requirements Coverage
 
